@@ -31,9 +31,12 @@
 
             //RemoveNthFromEnd(head, 4);
             //int[] nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
-            int[] nums = [0, 1, 2, 2, 3, 0, 4, 2];
+            //int[] nums = [0, 1, 2, 2, 3, 0, 4, 2];
             //var unielement = RemoveDuplicates(nums);
-            var k=RemoveElement(nums,2);
+            //var k=RemoveElement(nums,2);
+
+            char[] s = "hello".ToCharArray();
+            ReverseString(s);
         }
 
         public static ListNode RemoveNthFromEnd(ListNode head, int n)
@@ -289,8 +292,21 @@
         /// https://leetcode.com/problems/reverse-string/
         /// </summary>
         /// <param name="s"></param>
-        public void ReverseString(char[] s)
+        public static void ReverseString(char[] s)
         {
+            //create two pointers
+            //replace each other value
+            //while pointer1<pointer2
+            int startPointer = 0;
+            int endPointer = s.Length - 1;
+            while (startPointer < endPointer) { 
+                char tempChar=s[startPointer];
+                s[startPointer] = s[endPointer];
+                s[endPointer] = tempChar;
+                startPointer++;
+                endPointer++;
+            
+            }
 
         }
     }
