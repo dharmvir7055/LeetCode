@@ -38,8 +38,9 @@
             //char[] s = "hello".ToCharArray();
             // ReverseString(s);
 
-            int[] nums = [7, 1, 5, 3, 6, 4];
-            var maxprofit=MaxProfit(nums);
+            //int[] nums = [7, 1, 5, 3, 6, 4];
+            //var maxprofit=MaxProfit(nums);
+            MoveZeroes([0, 1, 0, 3, 12]);
         }
 
         public static ListNode RemoveNthFromEnd(ListNode head, int n)
@@ -317,12 +318,7 @@
         /// <returns></returns>
         public static int MaxProfit(int[] prices)
         {
-            //maxP=0
-            //num1 num2
-            //if num2<num1
-            //then mxp=0 num2=num1=
-            //else maxp num2-num1
-
+            
             int maxProfit = 0;
             int pointer1 = prices[0];
 
@@ -341,8 +337,37 @@
 
             }
             return maxProfit;
+        }
 
-            
+        /// <summary>
+        /// https://leetcode.com/problems/move-zeroes/
+        /// </summary>
+        /// <param name="nums"></param>
+        public static void MoveZeroes(int[] nums)
+        {
+            int emptyPositionIndex = -1;
+            for(int i = 0; i < nums.Length; i++)
+            {
+                if (emptyPositionIndex < i && nums[i] != 0)
+                {
+                    emptyPositionIndex++;
+                    nums[emptyPositionIndex]=nums[i];
+                }
+            }
+            FillZeros(nums, ++emptyPositionIndex);
+
+        }
+        public static void FillZeros(int[] nums,int position)
+        {
+            for (int i = position; i < nums.Length; i++)
+            {
+                nums[i] = 0;
+            }
+        }
+
+        public int FindMaxConsecutiveOnes(int[] nums)
+        {
+
         }
     }
 
