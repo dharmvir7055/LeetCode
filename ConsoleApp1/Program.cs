@@ -35,8 +35,11 @@
             //var unielement = RemoveDuplicates(nums);
             //var k=RemoveElement(nums,2);
 
-            char[] s = "hello".ToCharArray();
-            ReverseString(s);
+            //char[] s = "hello".ToCharArray();
+            // ReverseString(s);
+
+            int[] nums = [7, 1, 5, 3, 6, 4];
+            var maxprofit=MaxProfit(nums);
         }
 
         public static ListNode RemoveNthFromEnd(ListNode head, int n)
@@ -276,18 +279,16 @@
         public static int RemoveElement(int[] nums, int val)
         {
             int pointer1 = -1;
-            for (int i = 0; i < nums.Length ; i++)
+            for (int i = 0; i < nums.Length; i++)
             {
                 if (nums[i] != val)
                 {
-                  
-                   
                 }
-              
             }
 
             return pointer1 + 1;
         }
+
         /// <summary>
         /// https://leetcode.com/problems/reverse-string/
         /// </summary>
@@ -299,15 +300,49 @@
             //while pointer1<pointer2
             int startPointer = 0;
             int endPointer = s.Length - 1;
-            while (startPointer < endPointer) { 
-                char tempChar=s[startPointer];
+            while (startPointer < endPointer)
+            {
+                char tempChar = s[startPointer];
                 s[startPointer] = s[endPointer];
                 s[endPointer] = tempChar;
                 startPointer++;
                 endPointer++;
-            
             }
+        }
 
+        /// <summary>
+        /// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+        /// </summary>
+        /// <param name="prices"></param>
+        /// <returns></returns>
+        public static int MaxProfit(int[] prices)
+        {
+            //maxP=0
+            //num1 num2
+            //if num2<num1
+            //then mxp=0 num2=num1=
+            //else maxp num2-num1
+
+            int maxProfit = 0;
+            int pointer1 = prices[0];
+
+            for (int i = 1; i < prices.Length; i++)
+            {
+                var tempProfit = prices[i] - pointer1;
+                if (prices[i] < pointer1)
+                {
+                    pointer1 = prices[i];
+
+                }
+                if (tempProfit > maxProfit)
+                {
+                    maxProfit = tempProfit;
+                }
+
+            }
+            return maxProfit;
+
+            
         }
     }
 
