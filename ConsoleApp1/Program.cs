@@ -437,6 +437,48 @@
             return num;
         }
 
+        /// <summary>
+        /// https://leetcode.com/problems/binary-search/
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        /// Input: nums = [-1,0,3,5,9,12], target = 9
+        /// Output: 4
+        /// Explanation: 9 exists in nums and its index is 4
+        public static int Search(int[] nums, int target)
+        {
+            //get mid
+            //if mid==tr return mid
+            //if mid <target then lp=mid+1
+            //if mid >target then rp=mid-1
+            //while l<=r
+
+            if (nums.Length==0)
+            {
+                return -1;
+            }
+            int lp = 0;
+            int rp=nums.Length-1;
+            while (lp<=rp)
+            {
+                int mid=(lp+rp)/2;
+                if (nums[mid] == target)
+                {
+                    return mid;
+                }
+                if (nums[mid] < target)
+                {
+                    lp=mid+1;
+                }
+                if (nums[mid] > target)
+                {
+                    rp = mid- 1;
+                }
+            }
+            return -1;
+        }
+
     }
 
     public class ListNode
